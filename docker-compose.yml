@@ -1,0 +1,5 @@
+version: '3'
+services:
+  files:
+    container_name: ovpn-files-1
+    build: .
