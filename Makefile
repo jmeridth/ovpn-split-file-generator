@@ -1,4 +1,4 @@
-DOCKER_COMPOSE := docker-compose
+DOCKER_COPY := docker cp ovpn-files-1:/tmp
 
 .PHONY : help
 help: # Display help
@@ -21,13 +21,13 @@ dc : ## run docker-compose
 
 .PHONY : cpy
 cpy : ## copy generated client.ovpn.split
-	@docker cp ovpn-files-1:/tmp/client.split.ovpn .
-	docker cp ovpn-files-1:/tmp/ca.crt .
-	docker cp ovpn-files-1:/tmp/user.crt .
-	docker cp ovpn-files-1:/tmp/client.key .
-	docker cp ovpn-files-1:/tmp/ta.key .
+	@${DOCKER_COPY}/client.split.ovpn .
+	${DOCKER_COPY}/ca.crt .
+	${DOCKER_COPY}/user.crt .
+	${DOCKER_COPY}/client.key .
+	${DOCKER_COPY}/ta.key .
 
 .PHONY : clean
 clean : ## copy generated client.ovpn.split
 	@docker rm -f ovpn-files-1
-	docker rmi openvpn_files
+	docker rmi ovpnsplitfilegenerator_files
