@@ -5,4 +5,5 @@ I needed to use openvpn with username/password and 2fa.  UI tools on Ubuntu aren
 # To Use:
 
     make all
-    sudo openvpn --config client.split.ovpn
+    echo -e "[your vpn username]\n[your vpn password]" > ~/.vpncreds
+    sudo openvpn --config client.split.ovpn --auth-user-pass ~/.vpncreds
