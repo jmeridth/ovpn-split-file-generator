@@ -17,7 +17,7 @@ validate : ## ensure client.ovpn file exists in current directory
 
 .PHONY : dc
 dc : ## run docker-compose
-	@docker-compose up
+	@/usr/local/bin/docker-compose up
 
 .PHONY : cpy
 cpy : ## copy generated client.ovpn.split
